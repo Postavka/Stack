@@ -3,18 +3,30 @@
 *&---------------------------------------------------------------------*
 *&
 *&---------------------------------------------------------------------*
-REPORT zstack.
+report zstack.
 
-INCLUDE zstack_types.
+include zstack_types.
 
-INCLUDE zstack_classes.
+include zstack_classes.
 
-START-OF-SELECTION.
+start-of-selection.
 
-DATA stack TYPE REF TO lcl_stack.
-CREATE OBJECT stack.
+  data stack type ref to lcl_stack.
+  create object stack.
 
-stack->push( iv_number = 1 ).
-stack->size( ).
-stack->pop( iv_number = 1 ).
-stack->size( ).
+ write 'Simply for visual'.
+
+ stack->push( 'First' ).
+ stack->push( 'Second' ).
+ stack->push( 'Third' ).
+ stack->push( '4rth' ).
+ stack->push( '5th' ).
+
+ write / 'The last element is: '.
+ write stack->pop( ).
+ write / 'The first element is: '.
+ write stack->shift( ).
+ write / 'Now we will add zero on the first position'.
+ stack->unshift( 'zero' ).
+ write / 'And now the first element is: '.
+ write stack->shift( ).
